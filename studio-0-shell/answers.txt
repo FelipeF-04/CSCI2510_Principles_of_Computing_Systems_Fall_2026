@@ -1,8 +1,6 @@
-Studio 0 commands
-
-1. wc -l access.log
-2. grep 404 access.log | wc -l
-3. awk '{print $1}' access.log | sort | uniq -c | sort -k 1 -r | head -3 | awk '{print $2, $1}'
-4. awk '{print $3}' access.log | sort | uniq
-5. awk '{print $2}' access.log | sort | uniq -c | sort -k 1 -r | awk '{print $2, $1}'
+wc -l access.log
+grep 404 access.log | wc -l
+awk '{print $1}' access.log | sort | uniq -c | sort -k 1 -r | head -3 | awk '{print $2, $1}'
+awk '{print $3}' access.log | sort | uniq
+awk '{print $2}' access.log | sort | uniq -c | sort -k 1 -r | awk '{print $2, $1}'
 

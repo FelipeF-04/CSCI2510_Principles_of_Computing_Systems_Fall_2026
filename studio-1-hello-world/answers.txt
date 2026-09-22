@@ -1,0 +1,34 @@
+CSCI 2510. Felipe Fung. Studio 1
+
+2. #include <stdio.h> 
+
+3. 
+- int printf(const char *format, ...);
+- int fprintf(FILE *stream, const char *format, ...);
+
+The main difference between printf and fprintf is their output destination. printf always writes formatted data directly to the standard output (stdout), fprintf allows you to send formatted data to any specified file stream, such as a file on disk or the standard error stream (stderr).
+
+4. The functions in the printf() family produce output according to  a format  as  described  below.  The functions printf() and vprintf() write output to stdout, the standard output stream;  fprintf()  and vfprintf()  write  output  to  the  given output stream.
+
+5. 
+$ ./hello_fprintf
+Testing fprintf()
+
+6. System calls is in section 2
+
+7. #include <unistd.h>
+
+9. 
+//Felipe Fung//09-22//ways to print in C
+#include <unistd.h>
+
+int main(int argc, char* argv[]){
+        write(STDOUT_FILENO, "Testing write()\n",17);
+
+}
+
+10. I does not compile. This happens because when we change the third argument of the write() system call to a value much larger than your character buffer, the write() function will attempt to read and output bytes from memory locations that lie past the end of your buffer, and in my case it crashes.
+
+11. 
+- When to use fprintf(): When we are writing a program that needs to run on any computer (Windows, Mac, Linux) and print text easily. 
+- When to use write(): When we are building a high-speed web server or a system tool that needs to send data directly to the internet or hardware as fast as possible.
