@@ -1,0 +1,6 @@
+testing insertion
+in new.txt
+my guess is 
+that this time 
+it will be added
+instead of replaced

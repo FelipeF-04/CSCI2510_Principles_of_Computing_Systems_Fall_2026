@@ -1,0 +1,12 @@
+CSCI 2510. Felipe Fung. Studio 2
+
+1. It repeats/prints as output whatever I initially typed in "cat"
+2. It prints as output the content inside the mars.txt file
+3. It copied the content from mars.txt to new.txt. Similarly to the "cp" command
+4. It replaced the content of the file with the lines i typed during "cat"
+5. Instead of replacing the whole file, this time it added the new lines into the existing new.txt
+6. #include <unistd.h>
+8. The return type of read() is "ssize_t". It returns 0 for EOF. It returns -1 if an error occurs.
+9. After compiling, the program behaved the same as cat.
+10. Changing the bufferSize does not affect the final result as long as the number used is greater than 0. When the buffer is very small, the program still works correctly, but it reads and writes slower.
+11. The main tradeoff is memory vs speed. A small buffer uses less RAM but make the process considerably slower beacuse the computer would have to move data in smaller chunks. A large buffer speeds up data transfers by moving big chunks at once, but it eats up much more memory.
