@@ -1,0 +1,52 @@
+CSCI 2510. Felipe Fung. Studio 3
+
+3.  for (int i=0; i<11;i++){
+        printf("%c\n", messagePtr[i]);
+    }   
+
+4. to the first letter of the string ("H")
+
+5. H
+
+6. 
+*(messagePtr + 1) prints E, 
+*(messagePtr + 3) prints L, 
+*(messagePtr + 4) prints O.
+
+7.  for (int i = 0; i < 11; i++){
+        printf("%c\n",*(messagePtr + i));
+    }
+
+8.  int i = 0;
+    while (messagePtr[i] != '\0'){
+        printf("%c\n", messagePtr[i]);
+        i++;
+    }
+
+9.  void printReverse( char* string ){
+        int length =1 0;
+        while (string[length] != '\0'){
+            length++;
+        }    
+        //printf("%i\n", length);
+        for (int i = length; i >= 0;i--){
+            printf("%c\n", string[i]);
+        }
+    }
+
+
+10. char* reverseString( char* input ){
+    int length = 0;
+    while (input[length] != '\0'){
+        length++;
+    } 
+    //printf("%i\n",length);
+    char* output = (char*)malloc( length+1 );
+    
+    for (int i = 0; i < length; i++){
+        output[i] = input[length-1-i];
+    }
+    output[length] = '\0';
+
+    return output; 
+}
