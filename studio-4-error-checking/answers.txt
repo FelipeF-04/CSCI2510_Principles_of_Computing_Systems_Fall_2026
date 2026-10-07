@@ -1,0 +1,61 @@
+CSCI 2510. Felipe Fung. Studio 4
+
+1.  #include <unistd.h>
+#include <fcntl.h>
+
+#define bufferSize 200
+
+int main(int argc, char *argv[]) {
+    char buffer[bufferSize];
+    ssize_t bytesRead;
+
+    int fd = open(argv[1], O_RDONLY);
+    if (fd == -1) {
+        return 1;
+    }
+
+    while (1) {
+        bytesRead = read(fd, buffer, bufferSize);
+
+        if (bytesRead == 0) {
+            break;
+        }
+
+        if (bytesRead == -1) {
+            return 1;
+        }
+
+        write(STDOUT_FILENO, buffer, bytesRead);
+    }
+
+    close(fd);
+    return 0;
+}
+
+2. Nothing gets printed, the console just waits for another command
+
+3. The same thing as before, nothing was printed
+
+4. open(),  openat(),  and  creat() return the new file descriptor (a nonnegative integer), or -1 if an error occurred (in which case, errno is set appropriately).
+
+5.  if (fd == -1) {
+        return 1;
+    }
+
+6. perror("Can't open file");
+
+7. 
+
+8. It prints "Can't open file: No such file or directory"
+
+9. It prints "Can't open file: Permission denied"
+
+10. - open():   returns -1 on error, sets errno
+    - close():  returns -1 on error, sets errno
+    - read():   returns -1 on error, sets errno
+    - write():  returns -1 on error, sets errno
+    - printf(): returns negative on error, sets errno
+
+11. 
+a. It makes your program easier to debug, because you can tell where the error is happening based on the returned message
+b. It saves the computer to keep wasting resources on running a program with mistakes present
