@@ -1,0 +1,40 @@
+CSCI 2510. Felipe Fung. Studio 5
+
+1. 
+Process ID: 435
+Process ID: 436
+Process ID: 437
+
+2. The operating system creates a new process (the child) by making an exact duplicate of the calling process (the parent)
+Process ID: 445
+Process ID: 446
+
+3. 
+On success, the PID of the child process is returned to the parent process, and 0 is returned to the child process.
+On failure, -1 is returned to the parent process, no child process is created, and errno is set appropriately.
+
+4. 
+Parent Process. Process ID: 486
+Child Process. Process ID: 487
+
+5. It does not behave as expected. The parent process runs as expected, but then it seems like the program ends (the CLI waits for another command), and then after three seconds, the child process prints its ID.
+
+6. By adding waitpid(child_PID, NULL, 0) in the parent process, now it waits for the child to finish (3 sec) before printing its own PID.
+
+Child Process. Process ID: 511
+Parent Process. Process ID: 510
+
+7. 
+-rwxrwxrwx 1 felipe felipe  6079 Oct 20 11:48 README.md
+-rwxrwxrwx 1 felipe felipe   981 Oct 23 22:02 answers.txt
+-rwxrwxrwx 1 felipe felipe 16176 Oct 23 22:02 fork
+-rwxrwxrwx 1 felipe felipe   516 Oct 23 22:01 fork.c
+
+8. 
+Child Process. Process ID: 532
+total 32
+-rwxrwxrwx 1 felipe felipe  6079 Oct 20 11:48 README.md
+-rwxrwxrwx 1 felipe felipe  1219 Oct 23 22:04 answers.txt
+-rwxrwxrwx 1 felipe felipe 16272 Oct 23 22:06 fork
+-rwxrwxrwx 1 felipe felipe   755 Oct 23 22:06 fork.c
+Parent Process. Process ID: 531
