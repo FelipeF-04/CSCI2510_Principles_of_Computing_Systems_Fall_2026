@@ -1,0 +1,46 @@
+CSCI 2510. Felipe Fung. Studio 6
+
+1. Input: my name is felipe
+my name is felipe
+
+2. The initial call to strtok() takes the input string as its first argument, along with the delimiters used to separate the tokens. Subsequent calls use NULL as the first argument, allowing strtok() to continue parsing the same string from where it left off.
+
+3. For regular text input the delimiter should be " "
+
+4. 
+Input: hello world
+hello
+
+5.
+Input: my name is felipe
+my
+name
+is
+felipe
+
+6. 
+if (strchr(input_string, '\n') != NULL) {
+    *strchr(input_string, '\n') = '\0';
+}
+
+8. char *cmd = strtok(in_string, " ");
+
+9. 
+    my_argv[0] = cmd;
+    int i = 1;
+    char* res = strtok(NULL, " ");
+
+    while (res != NULL) {
+        my_argv[i] = res;
+        i++;
+        res = strtok(NULL, " ");
+    }
+    my_argv[i] = NULL;
+
+10. 
+Input: ls -l
+total 32
+-rwxrwxrwx 1 felipe felipe  5991 Oct 27 11:36 README.md
+-rwxrwxrwx 1 felipe felipe  1115 Oct 28 19:59 answers.txt
+-rwxrwxrwx 1 felipe felipe 16360 Oct 28 20:01 parsing_input
+-rwxrwxrwx 1 felipe felipe   888 Oct 28 20:01 parsing_input.c
