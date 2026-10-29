@@ -3,10 +3,17 @@
 #include <unistd.h> //fork(), execvp(), perror(), waidpid() 
 #include <stdlib.h> //For exit()
 #include <stdio.h> //For printf()
+#include <sys/wait.h>
+
+void handle_sigint( int signum ){
+	printf("Parent: Ignoring SIGINT (signal %d)\n", signum);
+}
 
 int main( int argc, char* argv[] ){
 
 	pid_t ret;
+
+	signal(SIGINT, handle_sigint);
 
 	printf("Forking sleeper...\n");	
 

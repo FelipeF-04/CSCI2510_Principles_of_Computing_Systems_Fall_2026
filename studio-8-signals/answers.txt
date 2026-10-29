@@ -1,0 +1,59 @@
+CSCI 2510. Felipe Fung. Studio 8
+
+1. 
+./sleep
+Sleeper's PID is: 419
+Slept for 0 iterations!
+Slept for 1 iterations!
+Slept for 2 iterations!
+Slept for 3 iterations!
+Slept for 4 iterations!
+Slept for 5 iterations!
+Slept for 6 iterations!
+Slept for 7 iterations!
+Slept for 8 iterations!
+Slept for 9 iterations!
+^C
+
+2. SIGINT is signal number 2. The associated comment is "Interrupt from keyboard"
+
+3. After runinng the command "kill -s 2 465", SIGINT terminated the process. The sleeping program stops running before its intended sleep duration finishes. The same behavior than when we press Ctrl+C i
+
+4. "kill -s 19 487" was supposed to stop the process (but it terminated it)
+./sleep
+Sleeper's PID is: 487
+Slept for 0 iterations!
+Slept for 1 iterations!
+Slept for 2 iterations!
+Slept for 3 iterations!
+Slept for 4 iterations!
+Slept for 5 iterations!
+
+
+[1]+  Stopped                 ./sleep
+
+5. Both processes got killed beacuse the SIGINT signal is sent to the foreground process group. The calling program does not print its success message because it is interrupted before it can continue after waiting for the child process.
+
+6. 
+void handle_sigint( int signum ){
+	printf("Parent: Ignoring SIGINT (signal %d)\n", signum);
+}
+
+signal(SIGINT, handle_sigint); (inside main)
+
+7. 
+./call_sleeper
+Forking sleeper...
+Waiting for sleeper 547...
+Sleeper's PID is: 547
+Slept for 0 iterations!
+Slept for 1 iterations!
+Slept for 2 iterations!
+Slept for 3 iterations!
+Slept for 4 iterations!
+^CParent: Ignoring SIGINT (signal 2)
+Parent finished waiting and returned successfully!
+
+This time the parent process printed the success message
+
+8. Signal handling can be useful when a program receives a SIGTERM signal from the operating system or another process to request that it shut down. For example, a server can catch this signal to stop accepting new requests, finish processing current requests, save its data, and then exit safely.
